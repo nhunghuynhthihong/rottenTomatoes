@@ -19,7 +19,7 @@ class TableViewController: UITableViewController{
         let url = URL(string: "https://coderschool-movies.herokuapp.com/movies?api_key=xja087zcvxljadsflh214")
         
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) -> Void in
-            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: <#T##JSONSerialization.ReadingOptions#>) as? NSDictionary{
+            if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? Dictionary<String, Any>{
                 //print(jsonObj?.value(forKey: "movies"))
                 if let movieArray = jsonObj?.value(forKey: "movies"){
                     for movie in movieArray{
